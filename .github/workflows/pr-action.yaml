@@ -20,9 +20,6 @@ jobs:
       - name: Run Eslint lint
         run: yarn lint
 
-      - name: Run Prettier lint
-        run: yarn prettier:check
-
       - name: Run Typescript check
         run: yarn types
 

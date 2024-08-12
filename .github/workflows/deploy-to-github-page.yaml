@@ -49,13 +49,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
+      - name: Deploy to GitHub Pages 🚀
+        uses: actions/deploy-pages@v4
         with:
-          name: dist-folder
-          path: dist/
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
-        with:
-          folder: dist
+          artifact_name: dist-folder

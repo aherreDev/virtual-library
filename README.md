@@ -22,6 +22,21 @@ To do this, we want to develop a web application that allows users to view the a
 - Vite (For building the project)
 - Typescript (For static typing)
 - Yarn (For package management)
+- Netlify (For deployment)
+- Github Actions (For CI/CD)
+- Bulma (For some styling)
+
+## Framework agnostic support
+
+Since part of the main requirements was to try to make a framework agnostic solution,
+I decided to use Zustand for state management, which is a simple and fast library that can be used with any
+framework or library, then I used Vite as a build tool, which is a modern build tool that can be used with any
+framework or library, and finally, I used Bulma as a CSS framework,
+which is a lightweight and easy-to-use CSS framework that can be used with any framework or library.
+
+Also, I used Typescript for static typing, which is a superset of Javascript that can be used
+with any framework or library and I tried to modularize the code as much as possible
+to make it easier to maintain and migrate it to another framework.
 
 ## How to run the project
 

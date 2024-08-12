@@ -1,14 +1,14 @@
 .interVar {
   font-family: "Inter Var", sans-serif;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .cardBody {
   background-color: var(--color-gray-50);
   position: relative;
-  width: auto;
   height: auto;
   border-radius: 0.75rem;
-  padding: 1.5rem;
   border: 1px solid var(--color-black-opacity-10);
 }
 
@@ -29,6 +29,7 @@
 
 .cardItemImgBg {
   width: 100%;
+  max-width: 25vw;
   height: 25rem;
   background-size: cover;
   background-position: center;

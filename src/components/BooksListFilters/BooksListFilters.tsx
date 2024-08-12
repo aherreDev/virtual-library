@@ -17,6 +17,23 @@ const BooksListFilters = () => {
     return Array.from(genres);
   }, [books]);
 
+  const booksAmountPerGenre = useMemo(() => {
+    const booksAmountPerGenre = new Map<string, number>();
+
+    books.forEach((book) => {
+      if (booksAmountPerGenre.has(book.genre)) {
+        booksAmountPerGenre.set(
+          book.genre,
+          (booksAmountPerGenre.get(book.genre) || 0) + 1
+        );
+      } else {
+        booksAmountPerGenre.set(book.genre, 1);
+      }
+    });
+
+    return booksAmountPerGenre;
+  }, [books]);
+
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const genre = event.target.value;
     const isChecked = event.target.checked;
@@ -32,17 +49,19 @@ const BooksListFilters = () => {
 
   return (
     <div>
-      <h2>Filters</h2>
+      <h2>Filters - Total ({books.length})</h2>
 
-      <div className="is-flex is-flex-direction-column">
+      <div className="is-flex-desktop is-flex-direction-column">
         {availableFilters.map((genre) => (
-          <label className="checkbox" key={genre}>
+          <label className="checkbox mx-2 mx-0-desktop" key={genre}>
             <input
               type="checkbox"
               value={genre}
               onChange={handleFilterChange}
+              checked={filterGenre.includes(genre)}
+              className="mr-2"
             />
-            {genre}
+            {genre} - ({booksAmountPerGenre.get(genre)})
           </label>
         ))}
       </div>

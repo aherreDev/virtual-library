@@ -32,14 +32,11 @@ const BookCard: FC<BookCardProps> = ({ book, testId, isOnReadingList }) => {
   return (
     <CardContainer className={styles.interVar} testId={testId}>
       <CardBody className={styles.cardBody} testId={cardBodyTestId}>
-        <CardItem
-          translateZ="100"
-          className={styles.cardItemImg}
-          testId={cardItemImgTestId}
-        >
+        <CardItem translateZ="100" className={styles.cardItemImg}>
           <div
             className={styles.cardItemImgBg}
             style={{ backgroundImage: `url(${book.cover})` }}
+            data-testid={cardItemImgTestId}
           />
         </CardItem>
 
@@ -48,7 +45,7 @@ const BookCard: FC<BookCardProps> = ({ book, testId, isOnReadingList }) => {
           className={styles.cardItemTitle}
           testId={cardItemTitleTestId}
         >
-          {book.title}
+          {book.title} ({book.year})
         </CardItem>
 
         <CardItem
@@ -70,14 +67,14 @@ const BookCard: FC<BookCardProps> = ({ book, testId, isOnReadingList }) => {
         <div className={styles.cardActions}>
           {isOnReadingList ? (
             <button
-              className="button is-danger"
+              className="button is-danger is-fullwidth"
               onClick={handleRemoveFromReadingList}
             >
               Remove from reading list
             </button>
           ) : (
             <button
-              className="button is-primary"
+              className="button is-primary is-fullwidth"
               onClick={handleAddToReadingList}
             >
               Add to reading list

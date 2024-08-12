@@ -15,7 +15,7 @@ const PageSections = () => {
   const savedTagClass = isSaved ? "is-primary" : "is-clickable is-secondary";
 
   return (
-    <div className="is-flex is-align-items-baseline">
+    <div className="is-flex is-flex-wrap-wrap is-align-items-baseline mb-2 mb-0-desktop">
       <div className="tags has-addons mx-2">
         <span
           className={`tag is-large ${allTagClass}`}

@@ -21,7 +21,7 @@ const BooksList = () => {
   );
 
   return (
-    <div className="is-flex px-5">
+    <div className="is-flex-desktop px-5 pb-5">
       {isLoading ? (
         <p data-testid="books-loading">Loading...</p>
       ) : (

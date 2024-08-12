@@ -1,0 +1,114 @@
+.interVar {
+  font-family: "Inter Var", sans-serif;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.cardBody {
+  background-color: var(--color-gray-50);
+  position: relative;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-black-opacity-10);
+}
+
+.cardBody.dark {
+  background-color: var(--color-black);
+  border-color: var(--color-white-opacity-20);
+}
+
+.cardBody.dark:hover {
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1),
+    0 4px 20px 0 rgba(56, 178, 172, 0.1);
+}
+
+.cardItemImg {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.cardItemImgBg {
+  width: 100%;
+  max-width: 25vw;
+  height: 25rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0.5rem;
+}
+
+.cardItemTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-neutral-600);
+}
+
+.cardItemTitle.dark {
+  color: var(--color-white);
+}
+
+.cardItemAuthor {
+  font-size: 1.125rem;
+  color: var(--color-neutral-500);
+}
+
+.cardItemAuthor.dark {
+  color: var(--color-white);
+}
+
+.cardItemGenre {
+  font-size: 1rem;
+  color: var(--color-neutral-500);
+}
+
+.cardItemGenre.dark {
+  color: var(--color-white);
+}
+
+.cardActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.group_card:hover {
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1),
+    0 4px 20px 0 rgba(56, 178, 172, 0.1);
+}
+
+.bg_gray_50 {
+  background-color: var(--color-gray-50);
+}
+
+.text_neutral_600 {
+  color: var(--color-neutral-600);
+}
+
+.text_neutral_500 {
+  color: var(--color-neutral-500);
+}
+
+.dark_bg_black {
+  background-color: var(--color-black);
+}
+
+.dark_text_white {
+  color: var(--color-white);
+}
+
+.dark_border_white_20 {
+  border-color: var(--color-white-opacity-20);
+}
+
+.border_black_10 {
+  border-color: var(--color-black-opacity-10);
+}
+
+.dark_hover_shadow_2xl {
+  box-shadow: 0 0 32px 0 rgba(0, 0, 0, 0.25);
+}
+
+.dark_hover_shadow_emerald_500_10 {
+  box-shadow: 0 4px 12px 0 rgba(56, 178, 172, 0.1),
+    0 4px 20px 0 rgba(56, 178, 172, 0.1);
+}

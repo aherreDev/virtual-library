@@ -1,0 +1,19 @@
+.heroBanner {
+  position: relative;
+  background-color: transparent !important;
+  z-index: 2;
+}
+
+.heroBanner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  background: url("https://img.freepik.com/free-vector/flat-world-book-day-pattern-design_23-2149320522.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

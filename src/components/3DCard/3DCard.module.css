@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.innerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.2s ease-linear;
+}
+
+.cardBody {
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
+.cardBody > * {
+  transform-style: preserve-3d;
+}
+
+.cardItem {
+  width: fit-content;
+  transition: all 0.2s ease-linear;
+}

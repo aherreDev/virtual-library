@@ -1,53 +1,43 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense } from "react";
 
-import { ApiResponse, Book } from "~/types";
-import { apiLibraryItemsToBooks } from "~/utils";
+// import BooksList from "~/components/BooksList/BooksList";
+import Navbar from "~/components/Navbar/Navbar";
+import PageSections from "~/components/PageSections/PageSections";
 
-const fetchBooks = async () => {
-  try {
-    const response = await fetch("/books.json");
-    const data: ApiResponse = await response.json();
+import styles from "./App.module.css";
 
-    const books = apiLibraryItemsToBooks(data.library);
-
-    return books;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
+const BooksList = lazy(() => import("~/components/BooksList/BooksList"));
 
 function App() {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const initializeBooksList = async () => {
-    setIsLoading(true);
-    const data = await fetchBooks();
-
-    setBooks(data);
-    setIsLoading(false);
-  };
-  useEffect(() => {
-    initializeBooksList();
-  }, []);
+  const heroSectionClasses = `hero is-medium is-primary ${styles.heroBanner}`;
 
   return (
-    <div>
-      <h1>Books</h1>
+    <div className="App has-background-white mb-4">
+      <Navbar />
 
-      <div>
-        {isLoading ? (
-          <p data-testid="books-loading">Loading...</p>
-        ) : (
-          <ul data-testid="books-list">
-            {books.map((book, i) => (
-              <li key={`${book.ISBN}-${i}`} data-testid={`book-${book.ISBN}`}>
-                {book.title}
-              </li>
-            ))}
-          </ul>
-        )}
+      <section className={heroSectionClasses}>
+        <div className="hero-body is-pos-relative">
+          <p className="title">Welcome to your virtual library 📚</p>
+          <p className="subtitle">
+            To get started just go trough the available books list and select
+            the ones that you want to to add to your reading list. Happy
+            reading!
+          </p>
+        </div>
+      </section>
+
+      <div className="container has-background-white my-4">
+        <h2 className="title is-3 has-text-primary">
+          Explore all the unique books
+        </h2>
+
+        <PageSections />
+
+        <Suspense
+          fallback={<div className="loader is-loading" data-testid="spinner" />}
+        >
+          <BooksList />
+        </Suspense>
       </div>
     </div>
   );

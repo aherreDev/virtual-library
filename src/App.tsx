@@ -1,53 +1,23 @@
-import { useEffect, useState } from "react";
+import { Spinner } from "@chakra-ui/react";
+import { lazy, Suspense } from "react";
 
-import { ApiResponse, Book } from "~/types";
-import { apiLibraryItemsToBooks } from "~/utils";
+// import BooksList from "~/components/BooksList/BooksList";
+import Navbar from "~/components/Navbar/Navbar";
+import PageSections from "~/components/PageSections/PageSections";
 
-const fetchBooks = async () => {
-  try {
-    const response = await fetch("/books.json");
-    const data: ApiResponse = await response.json();
-
-    const books = apiLibraryItemsToBooks(data.library);
-
-    return books;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-};
+const BooksList = lazy(() => import("~/components/BooksList/BooksList"));
 
 function App() {
-  const [books, setBooks] = useState<Book[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const initializeBooksList = async () => {
-    setIsLoading(true);
-    const data = await fetchBooks();
-
-    setBooks(data);
-    setIsLoading(false);
-  };
-  useEffect(() => {
-    initializeBooksList();
-  }, []);
-
   return (
-    <div>
-      <h1>Books</h1>
+    <div className="App">
+      <Navbar />
 
-      <div>
-        {isLoading ? (
-          <p data-testid="books-loading">Loading...</p>
-        ) : (
-          <ul data-testid="books-list">
-            {books.map((book, i) => (
-              <li key={`${book.ISBN}-${i}`} data-testid={`book-${book.ISBN}`}>
-                {book.title}
-              </li>
-            ))}
-          </ul>
-        )}
+      <div className="has-background-white">
+        <PageSections />
+
+        <Suspense fallback={<Spinner size="xl" />}>
+          <BooksList />
+        </Suspense>
       </div>
     </div>
   );

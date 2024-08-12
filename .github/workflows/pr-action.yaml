@@ -1,0 +1,30 @@
+name: PR automated checks
+run-name: Testing code of ${{ github.actor }} - ${{ github.run_number }} 👀
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run Eslint lint
+        run: yarn lint
+
+      - name: Run Prettier lint
+        run: yarn prettier:check
+
+      - name: Run Typescript check
+        run: yarn types
+
+      - name: Run Vitest tests
+        run: yarn test:ci
